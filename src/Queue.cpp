@@ -1,7 +1,10 @@
+#include <iostream>
+#include <stdexcept>
 #include "Queue.h"
 
 Queue::Queue() 
 	: _queue(new Node())
+	, _last(new Node())
 {
 }
 	
@@ -15,9 +18,20 @@ Queue::~Queue()
 	}
 }
 
-void Queue::push(int) noexcept
+void Queue::push(int value) 
 {
 
+	Node *p = new Node(value,nullptr);
+	if(empty())
+	{
+		_queue = p;
+	}
+	else
+	{
+		_last->_next = p;
+	}
+	_last = p;
+	
 }
 void Queue::pop()
 {

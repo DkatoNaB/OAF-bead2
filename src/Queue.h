@@ -1,6 +1,8 @@
 #ifndef __QUEUE_H__
 #define __QUEUE_H__
 
+#include <iostream>
+
 struct Node
 {
 	int _value;
@@ -12,18 +14,20 @@ struct Node
 class Queue
 {
 public:
-	explicit Queue();
+	Queue();
 	~Queue();
 
 	bool inline empty() const noexcept { return _queue == nullptr; };
-	void push(int) noexcept;
+	void push(int);
 	void pop();
 	int& front();
 	const int& front() const;
 
+	//friend operator<<(std::ostream&, const Queue&);
+
 private:
 	Node *_queue;
-	//Node *_head;
+	Node *_last;
 };
 
 #endif //__QUEUE_H__
