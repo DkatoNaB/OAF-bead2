@@ -1,37 +1,35 @@
-SOURCE_DIR= .$(srcdir)/src
-
-SOURCE= \
-	$(SOURCE_DIR)/main.cpp \
-	$(SOURCE_DIR)/Queue.cpp
-
-OBJ_DIR= \
-	.$(srcdir)/obj
-
-OBJ= $(patsubst $(SOURCE_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SOURCE)) 
-
-EXEC= .$(srcdir)/queue.exe
-
-CC=g++ 
-
-VERSION = -std=c++11
-
-BUILDFLAGS= -c 
-
-CCFLAGS = -Wall -Wextra
+SRC = src\Queue.cpp
+SRC += src\main.cpp
 
 
-all: build install
+# object list
+OBJS = $(SRC:.cpp=.o)
 
-build:
-	mkdir -p $(OBJ_DIR)
-	$(foreach SRC_FILE,$(SOURCE),\
-		$(CC) $(VERSION) $(BUILDFLAGS) $(CCFLAGS) $(SRC_FILE) -o\
-		$(patsubst $(SOURCE_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILE));)
 
-install:
-	$(CC) $(VERSION) $(CCFLAGS) $(OBJ) -o $(EXEC)
+CXX = g++
 
+CXXFLAGS = -std=c++11 -Wall -Wextra
+
+#build
+all: $(OBJS) 
+	$(CXX) $(CXXFLAGS) $(OBJS) -o queue
+
+#build rules 
+%.o: %.cpp 
+	$(CXX) -c $(CXXFLAGS) $< -o $@
+
+#clean
 clean:
 	DEL /F /S *.o
 	DEL queue.exe
+	DEL out.txt
 	DEL err.txt
+
+save:
+	queue.exe > out.txt
+
+help:
+	@echo "all		->	build all"
+	@echo "clean		->	delete .o and executeable"
+	@echo "save 		->	save output to out.txt"
+	@echo "saveERR	->	save errors to err.txt"
