@@ -1,0 +1,6 @@
+Reprezentáljon egy sor típust egyirányú fejelemes listával (a lista végére is lehessen
+közvetlenül hivatkozni)! Implementálja a szokásos műveleteket (elem a végén be, az
+elején ki, üres-e, mi van az elején), továbbá egy összefűző műveletet (operator+) is, ami
+egy sorhoz hozzáfűzi egy másik sor elemeit (a művelet után a második sor legyen üres)!
+Egészítse ki egy a sor összes elemét kiíró operátor<<-ral. Az összefűzés és a többi
+operáció műveletigénye is Ơ(1), kivéve a sorkiíró operátort.
