@@ -12,6 +12,13 @@ int main()
 	{
 		std::cout << "push got rekt2";
 	}
+	try
+	{
+		q.pop();
+	} catch (std::runtime_error& ex)
+	{
+		std::cout << "pop got rekt";
+	}
 	std::cout <<" Hello hello hello " <<std::endl;
 	return 0;
 }

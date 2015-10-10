@@ -35,7 +35,12 @@ void Queue::push(int value)
 }
 void Queue::pop()
 {
+	if(empty())	
+		throw std::runtime_error("Queue::Pop()->empty()->true");
 
+	Node *p = new Node(_queue->_value,_queue->_next);
+	_queue = _queue->_next;
+	delete p;
 }
 int& Queue::front()
 {
