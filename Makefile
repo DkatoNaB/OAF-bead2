@@ -11,7 +11,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra
 
 #build
-all: $(OBJS) 
+all: $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o queue
 
 #build rules 
@@ -25,8 +25,6 @@ clean:
 	DEL out.txt
 	DEL err.txt
 
-save:
-	queue.exe > out.txt
 
 help:
 	@echo "all		->	build all"
