@@ -18,12 +18,12 @@ public:
 	~Queue();
 
 	bool inline empty() const noexcept { return _queue == nullptr; };
-	void push(int);
+	void push(int) noexcept;
 	void pop();
 	
 	int& front();
 
-	//friend operator<<(std::ostream&, const Queue&);
+	friend std::ostream& operator<<(std::ostream&, Queue&);
 
 private:
 	Node *_queue;

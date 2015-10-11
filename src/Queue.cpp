@@ -12,7 +12,6 @@ Queue::~Queue()
 {
 	while( _queue != nullptr )
 	{
-		//Node *p = _queue;
 		auto *p = _queue;
 		_queue = p->_next;
 		delete p;
@@ -20,10 +19,8 @@ Queue::~Queue()
 	_last = nullptr;
 }
 
-void Queue::push(int value) 
+void Queue::push(int value) noexcept
 {
-
-	//Node *p = new Node(value,nullptr);
 	auto *p = new Node(value,nullptr);
 
 	if(empty())
@@ -39,7 +36,6 @@ void Queue::pop()
 	if(empty())	
 		throw std::runtime_error("Queue::Pop()->empty()->true");
 
-	//Node *p = new Node(_queue->_value,_queue->_next);
 	auto *p = new Node(_queue->_value,_queue->_next);
 	_queue = _queue->_next;
 	delete p;
@@ -49,5 +45,21 @@ int& Queue::front()
 {
 	if(empty())	
 		throw std::runtime_error("Queue::front()->empty()->true");
+
 	return _queue->_value;
 }
+
+ std::ostream& operator<<(std::ostream& os, Queue& queue)
+ {
+ 	if(queue.empty())
+ 		os << "queue is empty" << std::endl;
+ 	else
+ 	{
+ 		while( queue._queue != nullptr )
+ 		{
+ 			os << queue;
+ 			queue._queue = queue._queue->_next;
+ 		}
+ 	}
+ 	return os;
+ }
