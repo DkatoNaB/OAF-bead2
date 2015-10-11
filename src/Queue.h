@@ -20,9 +20,8 @@ public:
 	bool inline empty() const noexcept { return _queue == nullptr; };
 	void push(int);
 	void pop();
-	/*however we pass-by-value doing this it won't be that slow &
-	we return a local object so it is necessary*/
-	int front();
+	
+	int& front();
 
 	//friend operator<<(std::ostream&, const Queue&);
 

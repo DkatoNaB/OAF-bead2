@@ -45,14 +45,9 @@ void Queue::pop()
 	delete p;
 }
 
-int Queue::front()
+int& Queue::front()
 {
 	if(empty())	
 		throw std::runtime_error("Queue::front()->empty()->true");
-	auto x = _queue->_value;
-	auto *p = new Node(_queue->_value,_queue->_next);
-	_queue = _queue->_next;
-	delete p;
-
-	return x;
+	return _queue->_value;
 }
