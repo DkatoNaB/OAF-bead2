@@ -12,7 +12,8 @@ Queue::~Queue()
 {
 	while( _queue != nullptr )
 	{
-		Node *p = _queue;
+		//Node *p = _queue;
+		auto *p = _queue;
 		_queue = p->_next;
 		delete p;
 	}
@@ -21,7 +22,9 @@ Queue::~Queue()
 void Queue::push(int value) 
 {
 
-	Node *p = new Node(value,nullptr);
+	//Node *p = new Node(value,nullptr);
+	auto *p = new Node(value,nullptr);
+
 	if(empty())
 	{
 		_queue = p;
@@ -38,12 +41,15 @@ void Queue::pop()
 	if(empty())	
 		throw std::runtime_error("Queue::Pop()->empty()->true");
 
-	Node *p = new Node(_queue->_value,_queue->_next);
+	//Node *p = new Node(_queue->_value,_queue->_next);
+	auto *p = new Node(_queue->_value,_queue->_next);
 	_queue = _queue->_next;
 	delete p;
 }
 int& Queue::front()
 {
+	if(empty())	
+		throw std::runtime_error("Queue::front()->empty()->true");
 	return _queue->_value;
 }
 const int& Queue::front() const 
