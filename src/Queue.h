@@ -35,7 +35,7 @@ public:
 		{
 		}
 
-		inline void first()			noexcept { current_element = eQueue-> _queue; }
+		inline void first()			noexcept { current_element = eQueue-> _head->_next; }
 		inline void next()			noexcept { current_element = current_element->_next; }
 		inline bool end() const 	noexcept { return current_element == nullptr; }
 		inline int current() const 	noexcept { return current_element->_value; }

@@ -65,14 +65,10 @@ void Queue::push(int value) noexcept
 
 	if(_head->_next == nullptr)
 	{
-		std::cout << "push it fker true" << std::endl;
 		_head->_next = _queue = p;
-		std::cout << _queue->_value << std::endl;
 	}
 	else
 	{
-		std::cout << "push it fker flase" << std::endl;
-		std::cout << _queue->_value << std::endl;
 		_last->_next = p;
 	}
 
@@ -84,8 +80,9 @@ void Queue::pop()
 		throw std::runtime_error("Queue::Pop()->empty()->true");
 	else
 	{
-		auto *p = new Node(_queue->_value,_queue->_next);
-		_queue = _queue->_next;
+		//std::cout <<
+		auto *p = new Node(_head->_next->_value,_head->_next->_next);
+		_head->_next = _head->_next->_next;
 		delete p;
 	}
 }
@@ -95,7 +92,7 @@ int& Queue::front()
 	if(empty())	
 		throw std::runtime_error("Queue::front()->empty()->true");
 
-	return _queue->_value;
+	return _head->_next->_value;
 }
 
  std::ostream& operator<<(std::ostream& os, Queue& queue)
