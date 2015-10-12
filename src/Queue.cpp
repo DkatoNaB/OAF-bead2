@@ -12,20 +12,21 @@ Queue::Queue()
 	
 Queue::~Queue()
 {
-	while( _queue != nullptr )
-	{
-		auto *p = _queue;
-		_queue = p->_next;
-		delete p;
-	}
-	_last = nullptr;
+		while( _head->_next != nullptr )
+		{
+			std::cout << "delete" << std::endl;
+			auto *p = _head->_next;
+			_head->_next = p->_next;
+			delete p;
+		}
+		_last = nullptr;
 }
 
 Queue::Queue(const Queue& other)
 {
 	_queue = new Node(other._queue->_value, other._queue->_next);
 	std::cout << "run bitch" << std::endl;
-	while(_queue != nullptr)
+	while(_queue->_next != nullptr)
 	{
 		std::cout << "run bitch" << std::endl;
 		_queue->_next = new Node(	  other._queue->_next->_value 
@@ -80,8 +81,8 @@ void Queue::pop()
 		throw std::runtime_error("Queue::Pop()->empty()->true");
 	else
 	{
-		//std::cout <<
-		auto *p = new Node(_head->_next->_value,_head->_next->_next);
+		std::cout << "p->deleted?" << std::endl;
+		auto *p = _head->_next;
 		_head->_next = _head->_next->_next;
 		delete p;
 	}
@@ -95,7 +96,7 @@ int& Queue::front()
 	return _head->_next->_value;
 }
 
- std::ostream& operator<<(std::ostream& os, Queue& queue)
+ std::ostream& operator<<(std::ostream& os,  Queue& queue)
  {
  	if(queue.empty())
  	{

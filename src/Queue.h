@@ -29,7 +29,7 @@ public:
 	class Enumerator
 	{
 	public:
-		Enumerator(Queue* queue) 
+		Enumerator( Queue* queue) 
 			: eQueue(queue)
 			, current_element(nullptr)
 		{
@@ -41,13 +41,13 @@ public:
 		inline int current() const 	noexcept { return current_element->_value; }
 
 	private:
-		Queue *eQueue;
+		 Queue *eQueue;
 		Node *current_element;
 	};
 
 	Enumerator createEnumator() { return Enumerator(this); }
 
-	friend std::ostream& operator<<(std::ostream&, Queue&);
+	friend std::ostream& operator<<(std::ostream&,  Queue&);
 
 private:
 	//Node *_queue;
