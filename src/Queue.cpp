@@ -14,7 +14,6 @@ Queue::~Queue()
 {
 		while( _head->_next != nullptr )
 		{
-			std::cout << "delete" << std::endl;
 			auto *p = _head->_next;
 			_head->_next = p->_next;
 			delete p;
@@ -24,15 +23,8 @@ Queue::~Queue()
 
 Queue::Queue(const Queue& other)
 {
-	_queue = new Node(other._queue->_value, other._queue->_next);
-	std::cout << "run bitch" << std::endl;
-	while(_queue->_next != nullptr)
-	{
-		std::cout << "run bitch" << std::endl;
-		_queue->_next = new Node(	  other._queue->_next->_value 
-									, other._queue->_next->_next
-								);
-	}	
+	_head = other._head;
+	_last = other._last;
 }
 
 /*
@@ -45,20 +37,17 @@ Queue::Queue(const Queue& other)
 
 */
 
-/*Queue& Queue::operator=(const Queue& other)
+Queue& Queue::operator=(const Queue& other)
 {
 	if(this == &other)
 		return *this;
-	delete _queue;
+	delete _head;
 
+	_head = other._head;
 	_last = other._last;
-	while( other._queue != nullptr)
-	{
-		auto *p = new Node(other._queue);
-		_queue = p->_next;
-	}
+
 	return *this;
-}*/
+}
 
 void Queue::push(int value) noexcept
 {

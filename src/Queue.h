@@ -14,11 +14,11 @@ struct Node
 class Queue
 {
 public:
-	Queue();
+	explicit Queue();
 	~Queue();
 
 	Queue(const Queue&);
-	//Queue& operator=(const Queue&);
+	Queue& operator=(const Queue&);
 
 	bool inline empty() const noexcept { return _head->_next == nullptr; };
 	void push(int) noexcept;
@@ -48,6 +48,7 @@ public:
 	Enumerator createEnumator() { return Enumerator(this); }
 
 	friend std::ostream& operator<<(std::ostream&,  Queue&);
+	friend std::ostream& operator+(Queue&);
 
 private:
 	//Node *_queue;
