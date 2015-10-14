@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+
 struct Node
 {
 	int _value;
@@ -14,6 +15,7 @@ struct Node
 class Queue
 {
 public:
+
 	explicit Queue();
 	~Queue();
 
@@ -57,11 +59,45 @@ private:
 #endif //__QUEUE_H__
 
 /*
-	A(1) 	->	 B(2)	 ->	 C(3)	 ->	 D(4)
-	"head"								"last"
-	q = 	new(a.val,a.next)	a.next = b
-			new(b.val,b.next)	b.next = c
-			new(c.val,c.next)	c.next = d
-	last = 	new(d.val,d.next) 	d.next = nullptr
-
+*	 Node type which contains a @_value & a @_next pointer
+*	 _______________	 ____________________
+*	|		|		|	|			|        |
+*	| value | next -|-->|  value    | next --|-->
+*	|_______|_______|	|___________|________|
+*
+*	A(1) 	->	 B(2)	 ->	 C(3)	 ->	 D(4)
+*	"head"								"last"
+*	q = 	new(a.val,a.next)	a.next = b
+*			new(b.val,b.next)	b.next = c
+*			new(c.val,c.next)	c.next = d
+*	last = 	new(d.val,d.next) 	d.next = nullptr
+*
+*
+*	\brief empty() func->bool
+*	returns if the queue is empty, checking the _next if nullptr
+*	because @_head;
+*
+*
+*
+*	pop() & front() works as a queue's pop & front algorithm says
+*	http://people.inf.elte.hu/fekete/algoritmusok_jegyzet/05_fejezet_Sor.pdf
+*	chapter 5.3.2 
+*
+*	class Enumerator{};
+*	helper class provides iterator behavior for our Queue
+*	createEnumerator() is a factory function 
+*
+*	operator<<(...)
+*	slightly missfunction() doesnt write '0' out 'cuz
+*	our head value is 0 so we have to distinguish it
+*	when concatenate (operator+()) is invoked
+*
+*
+*	operator+(Queue&) concanetate two queues
+*
+*	1->2->3 + 4->5->6 = 1->2->3->4->5->6
+*	h 	  l  o.h   o.l  h 			   l
+*
+*	l->next = o.h
+*	l = o.l	
 */

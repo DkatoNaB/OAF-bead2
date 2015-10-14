@@ -33,7 +33,6 @@ int main()
 	{
 		std::cout << "pop got rekt";
 	}
-	std::cout <<" Hello hello hello " <<std::endl;
 
 	Queue q2(q);
 	std::cout << "q2: " << q2 << std::endl;
