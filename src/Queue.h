@@ -23,7 +23,6 @@ public:
 	bool inline empty() const noexcept { return _head->_next == nullptr; };
 	void push(int) noexcept;
 	void pop();	
-
 	int& front();
 
 	class Enumerator
@@ -51,10 +50,18 @@ public:
 	friend std::ostream& operator+(Queue&);
 
 private:
-	//Node *_queue;
 	Node *_head;
-	//Node *_queue;
 	Node *_last;
 };
 
 #endif //__QUEUE_H__
+
+/*
+	A(1) 	->	 B(2)	 ->	 C(3)	 ->	 D(4)
+	"head"								"last"
+	q = 	new(a.val,a.next)	a.next = b
+			new(b.val,b.next)	b.next = c
+			new(c.val,c.next)	c.next = d
+	last = 	new(d.val,d.next) 	d.next = nullptr
+
+*/
