@@ -14,6 +14,7 @@ Queue::~Queue()
 		{
 			auto *p = _head->_next;
 			_head->_next = p->_next;
+			std::cout << "*p->_value: " << p->_value << std::endl;
 			delete p;
 		}
 		_last = nullptr;
@@ -45,7 +46,6 @@ void Queue::push(int value) noexcept
 		_head->_next = p;
 	else
 		_last->_next = p;
-
 	_last = p;
 }
 void Queue::pop()
@@ -80,9 +80,26 @@ int& Queue::front()
  		Queue::Enumerator it = queue.createEnumator();
  		for(it.first(); !it.end(); it.next())
  			os << it.current() << " ";
- 		
+
  		os << std::endl;
  		return os;
  	}
  	
  }
+
+ Queue& Queue::operator+(Queue& other)
+ {
+ 	_last->_next = other._head;
+ 	_last = other._last;
+ 	return *this;
+ }
+
+ /*
+
+1->2->3 + 4->5->6 = 1->2->3->4->5->6
+h 	  l  o.h    o.l h 			   l
+
+l->next = o.h
+l = o.l
+
+ */

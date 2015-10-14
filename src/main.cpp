@@ -48,5 +48,27 @@ int main()
 	q3 = q4;
 	std::cout << "q3: " << *q3 << std::endl;
 
+	delete q3;
+
+	Queue q5;
+	Queue q6;
+	try
+	{
+		q5.push(11);
+		q5.push(22);
+		q5.push(33);
+		q6.push(44);
+		q6.push(55);
+		q6.push(66);
+		std::cout << "q5: " << q5 << std::endl;
+		std::cout << "q6: " << q6 << std::endl;
+		q5 + q6;
+		std::cout << "q5 + q6: " << q5 << std::endl;
+	}
+	catch(std::runtime_error& ex)
+	{
+		std::cout << "push got rekt again" << std::endl;
+	}
+
 	return 0;
 }
