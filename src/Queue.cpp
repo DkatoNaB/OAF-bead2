@@ -4,10 +4,10 @@
 
 Queue::Queue() 
 	: _head(new Node())
-	, _queue(new Node())
+	//, _queue(new Node())
 	, _last(new Node())
 {
-	_queue = _last;
+	//_queue = _last;
 }
 	
 Queue::~Queue()
@@ -55,7 +55,8 @@ void Queue::push(int value) noexcept
 
 	if(_head->_next == nullptr)
 	{
-		_head->_next = _queue = p;
+		//_head->_next = _queue = p;
+		_head->_next = p;
 	}
 	else
 	{

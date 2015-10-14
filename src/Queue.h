@@ -53,7 +53,7 @@ public:
 private:
 	//Node *_queue;
 	Node *_head;
-	Node *_queue;
+	//Node *_queue;
 	Node *_last;
 };
 
